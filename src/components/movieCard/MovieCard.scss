@@ -1,15 +1,35 @@
 @import "../../scss/variables";
-.movie-card {
-  width: 400px;
-  border-radius: 8px;
-  width: 397px;
-  box-shadow: 15px 15px 30px #0000007a;
-  border-radius: 8px;
-  opacity: 1;
-  background-position: center;
-  background-size: cover;
-  background-repeat: no-repeat;
-  margin: 16px 9px 16px 9px;
+@media only screen and (min-width: 501px) {
+  .movie-card {
+    width: 400px;
+    border-radius: 8px;
+    box-shadow: 15px 15px 30px #0000007a;
+    border-radius: 8px;
+    opacity: 1;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 16px 9px 16px 9px;
+  }
+  .movie-large {
+    height: 526px;
+  }
+  .movie-small {
+    height: 374px;
+  }
+}
+@media only screen and (max-width: 760px) {
+  .movie-card {
+    width: 95% !important;
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+  .movie-large {
+    height: 60%;
+  }
+  .movie-small {
+    height: 40%;
+  }
 }
 .movie-card-header {
   height: 30%;

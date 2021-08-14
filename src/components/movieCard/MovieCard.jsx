@@ -8,14 +8,14 @@ export default function MovieCard({
   movieTrailer,
   movieWhereWatch,
   height,
+  className,
 }) {
   return (
     <React.Fragment>
       <div
-        className="movie-card"
+        className={className + " movie-card"}
         style={{
           backgroundImage: `url(${imgUrl})`,
-          height: `${height}px`,
         }}
       >
         <div className="movie-card-header">

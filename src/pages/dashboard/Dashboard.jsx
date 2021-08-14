@@ -13,7 +13,6 @@ export default function Dashboard() {
     let moviesRight = [];
     let aux = 1;
     res.data.forEach((movie, index) => {
-      let height = 526;
       if (aux === 2 || aux === 3) {
         if (aux === 2) {
           moviesRight.push(
@@ -22,24 +21,21 @@ export default function Dashboard() {
               movieName={movie.title}
               movieDuration={movie.duration}
               movieYear={movie.year}
-              height={height}
+              className={"movie-large"}
             ></MovieCard>
           );
-        }
-        else {
+        } else {
           moviesLeft.push(
             <MovieCard
               imgUrl={movie.imgUrl}
               movieName={movie.title}
               movieDuration={movie.duration}
               movieYear={movie.year}
-              height={height}
+              className={"movie-large"}
             ></MovieCard>
           );
         }
-
       } else {
-        height = 374;
         if (aux === 4) {
           moviesLeft.push(
             <MovieCard
@@ -47,7 +43,7 @@ export default function Dashboard() {
               movieName={movie.title}
               movieDuration={movie.duration}
               movieYear={movie.year}
-              height={height}
+              className="movie-small"
             ></MovieCard>
           );
           aux = 0;
@@ -58,15 +54,13 @@ export default function Dashboard() {
               movieName={movie.title}
               movieDuration={movie.duration}
               movieYear={movie.year}
-              height={height}
+              className="movie-small"
             ></MovieCard>
           );
         }
       }
 
-      
       aux++;
-      
     });
     setMoviesRight(moviesRight);
     setMoviesLeft(moviesLeft);
