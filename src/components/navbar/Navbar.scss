@@ -9,13 +9,22 @@
 }
 @media only screen and (max-width: 760px) {
   .logo {
-    padding-top: 50px;
-    padding-bottom: 64px;
+     padding-top: 50px;
+    padding-bottom: 55px;
+    height: 15%;
+    justify-content: center;
+    width: 100%;
+    position: absolute;
     background: url("/assets/Poligono-mobile.png") no-repeat padding-box;
-    background-position: center;
+    background-position: center;  
+    // padding-top: 50px;
+    // padding-bottom: 64px;
+    // background: url("/assets/Poligono-mobile.png") no-repeat padding-box;
+    // background-position: center;
     img {
       width: 215px;
-      height: 75px;
+      height: 65px;
     }
   }
 }
+   
