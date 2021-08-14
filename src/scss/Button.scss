@@ -19,3 +19,9 @@
   background: $darkGrey 0% 0% no-repeat padding-box;
   color: $white;
 }
+@media only screen and (max-width: 760px) {
+  .btn {
+    font: normal normal 600 9px/11px Montserrat;
+    padding: 5px 10px 5px 10px;
+  }
+}

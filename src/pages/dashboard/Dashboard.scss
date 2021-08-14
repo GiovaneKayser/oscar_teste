@@ -8,9 +8,13 @@
     top: 200px;
     position: relative;
   }
+  .list-movies {
+    width: 50%;
+  }
 }
 
 .list-movies {
+  margin-bottom: 100%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;

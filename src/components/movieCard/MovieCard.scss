@@ -20,9 +20,10 @@
 }
 @media only screen and (max-width: 760px) {
   .movie-card {
-    width: 95% !important;
+    width: 90% !important;
     margin-top: 7px;
     margin-bottom: 7px;
+    border-radius: 8px;
   }
   .movie-large {
     height: 60%;
