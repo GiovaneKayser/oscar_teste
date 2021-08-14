@@ -1,0 +1,21 @@
+.btn {
+  border-radius: 26px;
+  opacity: 1;
+  border: 0;
+  padding: 16px 44px 16px 44px;
+  font: $font;
+  text-align: center;
+  letter-spacing: 0px;
+}
+
+.btn-black {
+  background: $black 0% 0% no-repeat padding-box;
+  box-shadow: 0px 5px 6px $lightGray;
+  opacity: 1;
+  color: $white;
+}
+
+.btn-darkGrey {
+  background: $darkGrey 0% 0% no-repeat padding-box;
+  color: $white;
+}
