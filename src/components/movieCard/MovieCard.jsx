@@ -1,5 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import "./MovieCard.scss";
+import { Dropdown } from "react-bootstrap";
+
 export default function MovieCard({
   imgUrl,
   movieName,
@@ -41,6 +43,7 @@ export default function MovieCard({
           <div
             style={{
               marginBottom: "40px",
+              display: "flex",
             }}
           >
             <button
@@ -51,16 +54,26 @@ export default function MovieCard({
             >
               Trailer
             </button>
-            <button className="btn btn-black">
-              Assistir
-              <img
-                width="14px"
-                height="8px"
-                style={{ marginLeft: "8px" }}
-                src={process.env.PUBLIC_URL + "/icon/up.svg"}
-                alt=""
-              />
-            </button>
+            <Dropdown>
+              <Dropdown.Toggle className="btn btn-black" id="dropdown-basic">
+                Assistir
+                <img
+                  width="14px"
+                  height="8px"
+                  style={{ marginLeft: "8px" }}
+                  src={process.env.PUBLIC_URL + "/icon/up.svg"}
+                  alt=""
+                />
+              </Dropdown.Toggle>
+
+              <Dropdown.Menu className="dropdown-content">
+                <a href="#/action-1">Linha 1</a>
+                <hr></hr>
+                <a href="#/action-2">Linha 1</a>
+                <hr></hr>
+                <a href="#/action-3">Linha 1</a>
+              </Dropdown.Menu>
+            </Dropdown>
           </div>
         </div>
       </div>
