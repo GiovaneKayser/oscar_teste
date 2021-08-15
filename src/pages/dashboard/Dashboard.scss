@@ -21,3 +21,13 @@
   flex-direction: column;
   justify-content: flex-start;
 }
+.filter {
+  height: 150px;
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-items: flex-end;
+  justify-content: flex-start;
+  align-content: flex-end;
+}

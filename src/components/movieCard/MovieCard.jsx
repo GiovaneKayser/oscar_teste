@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./MovieCard.scss";
 import { Dropdown } from "react-bootstrap";
+import { useEffect } from "react";
 
 export default function MovieCard({
   imgUrl,
@@ -12,6 +13,73 @@ export default function MovieCard({
   height,
   className,
 }) {
+  const [whereWatchs, setWhereWatchs] = useState([]);
+  const [load, setLoad] = useState(false);
+  const streams = [
+    "netflix",
+    "hbomax",
+    "hbogo",
+    "google",
+    "microsoft",
+    "apple",
+    "looke",
+    "oiplay",
+    "now",
+  ];
+
+  function iconStream(url) {
+    var stream = {
+      imgUrl: "",
+      name: "",
+    };
+    streams.forEach((streamName) => {
+      if (url.includes(streamName)) {
+        stream = {
+          imgUrl: process.env.PUBLIC_URL + "/streams/" + streamName + ".jpg",
+          name: streamName,
+        };
+      }
+    });
+    return stream;
+  }
+
+  function loadWhereWatchs() {
+    var wheres = [];
+    if (movieWhereWatch != undefined || movieWhereWatch.length > 0) {
+      movieWhereWatch.forEach((stream) => {
+        var icon = iconStream(stream.split(";")[0]);
+        var aux = {
+          imgUrl: icon.imgUrl,
+          price: 10,
+          streamName: icon.name,
+        };
+        console.log(aux);
+        wheres.push(
+          <a className="stream-button" href={stream.split(";")[0]}>
+            <img
+              width="28px"
+              height="28px"
+              style={{ marginLeft: "8px" }}
+              src={aux.imgUrl}
+              alt=""
+            />
+            {iconStream(stream.split(";")[0]).streamName} Apartir de R$
+          </a>
+        );
+      });
+    } else {
+      wheres.push(<a href="#">Ainda não esta disponivel</a>);
+    }
+    setWhereWatchs(wheres);
+
+    setLoad(true);
+  }
+
+  useEffect(() => {
+    if (!load) {
+      loadWhereWatchs();
+    }
+  });
   return (
     <React.Fragment>
       <div
@@ -67,11 +135,12 @@ export default function MovieCard({
               </Dropdown.Toggle>
 
               <Dropdown.Menu className="dropdown-content">
-                <a href="#/action-1">Linha 1</a>
+                {whereWatchs}
+                {/* <a href="#/action-1">Linha 1</a>
                 <hr></hr>
                 <a href="#/action-2">Linha 1</a>
                 <hr></hr>
-                <a href="#/action-3">Linha 1</a>
+                <a href="#/action-3">Linha 1</a> */}
               </Dropdown.Menu>
             </Dropdown>
           </div>

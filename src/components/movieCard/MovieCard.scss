@@ -75,7 +75,6 @@
 .movie-card:hover .movie-card-body {
   visibility: visible;
   opacity: 1;
-
   color: $white;
   bottom: 0;
   height: 70%;
@@ -86,30 +85,12 @@
   margin-left: 24px;
 }
 
-.dropdown-content {
-  position: absolute;
-  inset: 0px auto auto 0px;
-  margin: 0px;
-  transform: translate(429px, 1017px);
+.stream-button {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   flex-wrap: nowrap;
   align-content: center;
-  background: white;
-  padding: 15px;
-  border-radius: 15px;
-  min-width: 160px;
-  z-index: 1;
-}
-.dropdown-content a {
-  color: black;
-  padding-top: 12.5px;
-  padding-bottom: 12.5px;
-  text-decoration: none;
-}
-.dropdown-content a:hover {
-  color: black;
-  padding-top: 12.5px;
-  padding-bottom: 12.5px;
-  text-decoration: none;
+  justify-content: space-between;
+  align-items: center;
+  width: 200px;
 }
