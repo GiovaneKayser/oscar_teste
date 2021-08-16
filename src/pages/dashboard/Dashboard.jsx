@@ -148,7 +148,7 @@ export default function Dashboard() {
                       setFilter("numberIndication");
                     }}
                   >
-                    Número de indica
+                    Número de Indicações
                   </li>
                 </Dropdown.Menu>
               </div>

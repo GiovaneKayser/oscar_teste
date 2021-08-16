@@ -27,6 +27,7 @@
   }
   .movie-large {
     height: 70%;
+    min-height: 285px;
   }
   .movie-small {
     height: 30%;
@@ -141,7 +142,7 @@
   .row-trailer {
     margin-bottom: 8px;
   }
-  .filter{
-    width:97%;
+  .filter {
+    width: 97%;
   }
 }
