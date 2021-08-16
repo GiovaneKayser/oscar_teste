@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./MovieCard.scss";
 import { Dropdown } from "react-bootstrap";
 import { useEffect } from "react";
+import Modal from "react-modal";
 
 export default function MovieCard({
   imgUrl,
@@ -10,22 +11,45 @@ export default function MovieCard({
   movieYear,
   movieTrailer,
   movieWhereWatch,
-  height,
   className,
 }) {
   const [whereWatchs, setWhereWatchs] = useState([]);
-  const [load, setLoad] = useState(false);
+  const [title, setTitle] = useState("");
+  const [modalIsOpen, setIsOpen] = useState(false);
+
   const streams = [
-    "netflix",
-    "hbomax",
-    "hbogo",
-    "google",
-    "microsoft",
-    "apple",
-    "looke",
-    "oiplay",
-    "now",
+    { urlName: "netflix", name: "Netflix" },
+    { urlName: "hbomax", name: "Hbo Max" },
+    { urlName: "hbogo", name: "Hbo Go" },
+    { urlName: "google", name: "Google Play" },
+    { urlName: "microsoft", name: "Microsoft" },
+    { urlName: "apple", name: "ITunes" },
+    { urlName: "looke", name: "Looke" },
+    { urlName: "oiplay", name: "Oi Play" },
+    { urlName: "now", name: "Now Online" },
+    { urlName: "prime", name: "Prime Video" },
   ];
+
+  const customStyles = {
+    content: {
+      top: "50%",
+      left: "50%",
+      right: "auto",
+      bottom: "auto",
+      marginRight: "-50%",
+      transform: "translate(-50%, -50%)",
+      padding: "0",
+      background: "transparent",
+      border: "0",
+    },
+  };
+
+  function openModal() {
+    setIsOpen(true);
+  }
+  function closeModal() {
+    setIsOpen(false);
+  }
 
   function iconStream(url) {
     var stream = {
@@ -33,10 +57,11 @@ export default function MovieCard({
       name: "",
     };
     streams.forEach((streamName) => {
-      if (url.includes(streamName)) {
+      if (url.includes(streamName.urlName)) {
         stream = {
-          imgUrl: process.env.PUBLIC_URL + "/streams/" + streamName + ".jpg",
-          name: streamName,
+          imgUrl:
+            process.env.PUBLIC_URL + "/streams/" + streamName.urlName + ".jpg",
+          name: streamName.name,
         };
       }
     });
@@ -50,20 +75,23 @@ export default function MovieCard({
         var icon = iconStream(stream.split(";")[0]);
         var aux = {
           imgUrl: icon.imgUrl,
-          price: 10,
           streamName: icon.name,
         };
-        console.log(aux);
         wheres.push(
           <a className="stream-button" href={stream.split(";")[0]}>
-            <img
-              width="28px"
-              height="28px"
-              style={{ marginLeft: "8px" }}
-              src={aux.imgUrl}
-              alt=""
-            />
-            {iconStream(stream.split(";")[0]).streamName} Apartir de R$
+            <strong className="stream-name">
+              <img
+                width="28px"
+                height="28px"
+                style={{ marginLeft: "8px", marginRight: "12px" }}
+                src={aux.imgUrl}
+                alt=""
+              />
+              {aux.streamName}
+            </strong>{" "}
+            {stream.split(";").length == 2
+              ? "a partir de R$ " + stream.split(";")[1]
+              : "Assinatura"}
           </a>
         );
       });
@@ -71,17 +99,33 @@ export default function MovieCard({
       wheres.push(<a href="#">Ainda não esta disponivel</a>);
     }
     setWhereWatchs(wheres);
-
-    setLoad(true);
   }
 
   useEffect(() => {
-    if (!load) {
+    if (title !== movieName) {
       loadWhereWatchs();
+      setTitle(movieName);
     }
   });
+
   return (
     <React.Fragment>
+      <Modal
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        style={customStyles}
+        contentLabel="Example Modal"
+      >
+        <iframe
+          width="696"
+          height="392"
+          src={"https://www.youtube.com/embed/" + movieTrailer}
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
+      </Modal>
       <div
         className={className + " movie-card"}
         style={{
@@ -96,7 +140,7 @@ export default function MovieCard({
               padding: "11px",
               fontSize: "22px",
             }}
-            className="btn btn-darkGrey"
+            className="btn btn-darkGrey btn-favorite"
           >
             <i className="bi bi-bookmark"></i>
           </button>
@@ -119,9 +163,11 @@ export default function MovieCard({
               style={{
                 marginRight: "16px",
               }}
+              onClick={openModal}
             >
               Trailer
             </button>
+
             <Dropdown>
               <Dropdown.Toggle className="btn btn-black" id="dropdown-basic">
                 Assistir
@@ -136,11 +182,6 @@ export default function MovieCard({
 
               <Dropdown.Menu className="dropdown-content">
                 {whereWatchs}
-                {/* <a href="#/action-1">Linha 1</a>
-                <hr></hr>
-                <a href="#/action-2">Linha 1</a>
-                <hr></hr>
-                <a href="#/action-3">Linha 1</a> */}
               </Dropdown.Menu>
             </Dropdown>
           </div>
