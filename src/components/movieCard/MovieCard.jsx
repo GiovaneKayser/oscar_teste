@@ -72,6 +72,12 @@ export default function MovieCard({
   function goToLink(url) {
     window.location.href = url;
   }
+  function changeTime(duration) {
+    let hour = duration / 60;
+    let min = duration % 60;
+    
+    return `${parseInt(hour)}h ${parseInt(min)}m  •`  }
+
   function loadWhereWatchs() {
     var wheres = [];
     if (movieWhereWatch != undefined || movieWhereWatch.length > 0) {
@@ -184,7 +190,7 @@ export default function MovieCard({
           <div>
             <h4 className="movie-title">{movieName}</h4>
             <h5 className="movie-duration">
-              {movieDuration} - {movieYear}
+              {changeTime(movieDuration)} {movieYear}
             </h5>
           </div>
           <div className="row-trailer">
