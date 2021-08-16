@@ -26,11 +26,17 @@ button {
   background: $darkGrey 0% 0% no-repeat padding-box;
   color: $white;
 }
-
-@media only screen and (max-width: 760px) {
+.btn-favorite {
+  padding: 14px 16px 13px 16px;
+}
+.btn-favorite img {
+  width: 16.66px;
+  height: 23.33px;
+}
+@media only screen and (max-width: 720px) {
   .btn {
     font: normal normal 600 9px/11px Montserrat;
-    padding: 5px 10px 5px 10px;
+    padding: 5px 7px 5px 10px;
   }
   .dropdown-content a {
     font: normal normal 300 10px/13px Montserrat;
@@ -40,8 +46,16 @@ button {
     font: normal normal 300 10px/13px Montserrat !important;
     padding: 5px 12px 5px 12px !important;
   }
-  button i {
-    font-size: 13.2px;
+  .btn-favorite {
+    padding: 5px 8px 7px 8px !important;
+  }
+  .btn-favorite img {
+    width: 8px !important;
+    height: 11px !important;
+  }
+  .dropdown-toggle img {
+    width: 4.11px !important;
+    height: 6.97px !important;
   }
 }
 .dropdown-content {

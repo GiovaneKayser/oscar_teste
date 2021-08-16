@@ -3,6 +3,7 @@ import "./MovieCard.scss";
 import { Dropdown } from "react-bootstrap";
 import { useEffect } from "react";
 import Modal from "react-modal";
+import { useCookies } from "react-cookie";
 
 export default function MovieCard({
   imgUrl,
@@ -16,6 +17,7 @@ export default function MovieCard({
   const [whereWatchs, setWhereWatchs] = useState([]);
   const [title, setTitle] = useState("");
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [cookies, setCookie] = useCookies(["favorites"]);
 
   const streams = [
     { urlName: "netflix", name: "Netflix" },
@@ -100,13 +102,20 @@ export default function MovieCard({
     }
     setWhereWatchs(wheres);
   }
-
+  async function addFavorite() {
+    let oldFavorites = cookies.favorites;
+    let newFavorites = oldFavorites + "," + movieName;
+    setCookie("favorites", newFavorites);
+  }
   useEffect(() => {
     if (title !== movieName) {
       loadWhereWatchs();
       setTitle(movieName);
     }
   });
+  if (cookies.favorites == undefined) {
+    setCookie("favorites", "");
+  }
 
   return (
     <React.Fragment>
@@ -130,6 +139,9 @@ export default function MovieCard({
         className={className + " movie-card"}
         style={{
           backgroundImage: `url(${imgUrl})`,
+          backgroundPosition: "center",
+          backgroundSize: "cover",
+          backgroundRepeat: "no-repeat",
         }}
       >
         <div className="movie-card-header">
@@ -141,8 +153,17 @@ export default function MovieCard({
               fontSize: "22px",
             }}
             className="btn btn-darkGrey btn-favorite"
+            onClick={addFavorite}
           >
-            <i className="bi bi-bookmark"></i>
+            {cookies.favorites.includes(movieName) ? (
+              <img
+                className="favorite-active"
+                src={process.env.PUBLIC_URL + "/icon/favorite-active.svg"}
+                alt=""
+              />
+            ) : (
+              <img src={process.env.PUBLIC_URL + "/icon/favorite.svg"} alt="" />
+            )}
           </button>
         </div>
         <div className="movie-card-body">
@@ -152,12 +173,7 @@ export default function MovieCard({
               {movieDuration} - {movieYear}
             </h5>
           </div>
-          <div
-            style={{
-              marginBottom: "40px",
-              display: "flex",
-            }}
-          >
+          <div className="row-trailer">
             <button
               className="btn btn-black"
               style={{

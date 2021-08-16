@@ -1,5 +1,5 @@
 @import "../../scss/variables";
-@media only screen and (min-width: 501px) {
+@media only screen and (min-width: 720px) {
   .movie-card {
     width: 400px;
     border-radius: 8px;
@@ -7,7 +7,7 @@
     border-radius: 8px;
     opacity: 1;
     background-position: center;
-    background-size: cover;
+    background-size: contain;
     background-repeat: no-repeat;
     margin: 16px 9px 16px 9px;
   }
@@ -18,7 +18,7 @@
     height: 374px;
   }
 }
-@media only screen and (max-width: 760px) {
+@media only screen and (max-width: 720px) {
   .movie-card {
     width: 90% !important;
     margin-top: 7px;
@@ -26,10 +26,10 @@
     border-radius: 8px;
   }
   .movie-large {
-    height: 60%;
+    height: 70%;
   }
   .movie-small {
-    height: 40%;
+    height: 30%;
   }
 }
 .movie-card .movie-card-body {
@@ -84,6 +84,9 @@
   justify-content: flex-end;
   margin-left: 24px;
 }
+.favorite-active {
+  filter: invert(1);
+}
 
 .stream-button {
   display: flex;
@@ -99,6 +102,10 @@
   align-content: center;
   align-items: center;
   display: flex;
+}
+.row-trailer {
+  display: flex;
+  margin-bottom: 40px;
 }
 .ReactModal__Overlay {
   background-color: rgba(0, 0, 0, 0.274) !important;
@@ -127,5 +134,14 @@
   }
   .movie-title {
     font: normal normal bold 10px/13px Montserrat !important;
+  }
+  .movie-card:hover .movie-card-body {
+    margin-left: 8px;
+  }
+  .row-trailer {
+    margin-bottom: 8px;
+  }
+  .filter{
+    width:97%;
   }
 }
