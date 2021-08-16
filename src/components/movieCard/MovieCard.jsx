@@ -155,12 +155,19 @@ export default function MovieCard({
             className="btn btn-darkGrey btn-favorite"
             onClick={addFavorite}
           >
-            {cookies.favorites.includes(movieName) ? (
-              <img
-                className="favorite-active"
-                src={process.env.PUBLIC_URL + "/icon/favorite-active.svg"}
-                alt=""
-              />
+            {cookies.favorites != undefined ? (
+              cookies.favorites.includes(movieName) ? (
+                <img
+                  className="favorite-active"
+                  src={process.env.PUBLIC_URL + "/icon/favorite-active.svg"}
+                  alt=""
+                />
+              ) : (
+                <img
+                  src={process.env.PUBLIC_URL + "/icon/favorite.svg"}
+                  alt=""
+                />
+              )
             ) : (
               <img src={process.env.PUBLIC_URL + "/icon/favorite.svg"} alt="" />
             )}
