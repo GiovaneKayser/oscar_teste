@@ -69,7 +69,9 @@ export default function MovieCard({
     });
     return stream;
   }
-
+  function goToLink(url) {
+    window.location.href = url;
+  }
   function loadWhereWatchs() {
     var wheres = [];
     if (movieWhereWatch != undefined || movieWhereWatch.length > 0) {
@@ -80,7 +82,12 @@ export default function MovieCard({
           streamName: icon.name,
         };
         wheres.push(
-          <a className="stream-button" href={stream.split(";")[0]}>
+          <li
+            className="stream-button"
+            onClick={() => {
+              goToLink(stream.split(";")[0]);
+            }}
+          >
             <strong className="stream-name">
               <img
                 width="28px"
@@ -94,7 +101,7 @@ export default function MovieCard({
             {stream.split(";").length == 2
               ? "a partir de R$ " + stream.split(";")[1]
               : "Assinatura"}
-          </a>
+          </li>
         );
       });
     } else {

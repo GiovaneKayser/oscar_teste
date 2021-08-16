@@ -1,7 +1,7 @@
 .movies {
   display: flex;
   justify-content: center;
-  margin-bottom: 100%;
+  margin-bottom: 54%;
 }
 @media only screen and (max-width: 760px) {
   .movies {
@@ -14,7 +14,7 @@
 }
 
 .list-movies {
-  margin-bottom: 100%;
+  // margin-bottom: 100%;
   display: flex;
   flex-wrap: nowrap;
   align-items: center;
