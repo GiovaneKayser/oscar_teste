@@ -27,10 +27,11 @@
   }
   .movie-large {
     height: 70%;
-    min-height: 285px;
+    min-height: 265px;
   }
   .movie-small {
     height: 30%;
+    min-height: 185px;
   }
 }
 .movie-card .movie-card-body {
@@ -134,7 +135,7 @@
     font: normal normal 300 10px/10px Montserrat !important;
   }
   .movie-title {
-    font: normal normal bold 13px/13px Montserrat !important
+    font: normal normal bold 13px/13px Montserrat !important;
   }
   .movie-card:hover .movie-card-body {
     margin-left: 8px;
